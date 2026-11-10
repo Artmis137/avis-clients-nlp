@@ -1,6 +1,6 @@
 # Analyse intelligente des avis clients (NLP)
 
-Projet de la matière « Analyse et restitution », M1 MLSD, Université Paris Cité (2026-2027).
+Projet de la matière "Analyse et restitution", M1 MLSD, Université Paris Cité (2026-2027).
 Binôme : Mamadou NIMAGA et Yhan HOUNTADA. Encadrante : Ikram Chourib. Soutenance le 15/03/2027.
 
 ## Problématique
