@@ -1,7 +1,7 @@
 # Analyse intelligente des avis clients (NLP)
 
 Projet de la matière "Analyse et restitution", M1 MLSD, Université Paris Cité (2026-2027).
-Binôme : Mamadou NIMAGA et Yhan HOUNTADA. Encadrante : Ikram Chourib. Soutenance le 15/03/2027.
+Binôme : Mamadou NIMAGA et Yahn HOUNTADA. Encadrante : Ikram Chourib. Soutenance le 15/03/2027.
 
 ## Problématique
 Une entreprise reçoit des milliers d'avis textuels que personne ne lit en entier. Comment transformer ce volume en informations décisionnelles fiables (satisfaction, thèmes, points de friction), et que gagne-t-on réellement avec un modèle de type BERT par rapport à une baseline classique ?
@@ -13,18 +13,29 @@ Une entreprise reçoit des milliers d'avis textuels que personne ne lit en entie
 4. Quels sont les thèmes dominants et les points de friction, validés par une évaluation humaine ?
 
 ## Données
-- Jeu de données : à choisir dans le dossier fourni par l'enseignante (une seule catégorie).
+- Jeu de données : **McDonald's Store Reviews**, fourni par l'enseignante (`McDonald_s_Reviews.csv`, également publié sur Kaggle sous ce nom).
+- Contenu : 33 396 avis Google en anglais sur 40 restaurants McDonald's aux États-Unis.
+- Variables utiles : texte de l'avis, note (1 à 5 étoiles), adresse du restaurant, latitude et longitude, ancienneté relative de l'avis (« 3 years ago »).
 - Étiquettes : 1-2 étoiles = négatif, 3 = neutre, 4-5 = positif.
-- Doublons supprimés avant le découpage ; découpage train / validation / test fixé une fois pour toutes (graine 42).
-- Sous-échantillonnage à environ 20 000 avis d'entraînement si nécessaire (Colab).
-- Les données ne sont pas versionnées : elles sont récupérées par `scripts/download.py`.
+- Doublons : 11 115 textes exactement identiques (souvent des avis d'un mot : « Excellent », « Good », « Neutral »), supprimés **avant** le découpage ; il reste 22 281 avis (environ 42 % négatifs, 14 % neutres, 44 % positifs).
+- Découpage train / validation / test fixé une fois pour toutes (graine 42), stratifié sur le sentiment.
+- Points d'attention : environ 3 000 avis contiennent des caractères mal encodés (à traiter au nettoyage) ; les dates sont relatives, donc l'évolution dans le temps reste approximative.
+- Les données ne sont pas versionnées : placer le fichier dans `data/raw/`, ou le récupérer avec `scripts/download.py`.
+
+### Pourquoi ce jeu plutôt que les autres
+| Fichier | Verdict |
+|---|---|
+| McDonald's (33 396 avis) | Retenu : taille adaptée à Colab, classes exploitables, thèmes lisibles pour un décideur, restaurants géolocalisés |
+| Avis vêtements (23 486 avis) | Écarté : notes très positives (4 % de 1 étoile), classes négative et neutre trop rares, pas de date |
+| Amazon (4 915 avis) | Écarté : un seul produit, 80 % de 5 étoiles |
+| Tweets de sentiment (4 815) | Écarté : pas des avis clients, pas de note, déjà prétraité |
 
 ## Niveau visé
-Niveau standard : nettoyage paramétrable, baseline, DistilBERT et BERT, thèmes, tableau de bord. Analyse par aspects (prix, livraison, qualité, service) si le temps le permet.
+Niveau standard : nettoyage paramétrable, baseline, DistilBERT et BERT, thèmes, tableau de bord avec carte des restaurants. Analyse par aspects (attente, service, propreté, qualité des produits, exactitude de la commande) si le temps le permet.
 
 ## Répartition des rôles
 - Mamadou : Transformers (DistilBERT, BERT/CamemBERT), mesures de temps et de mémoire, tableau de bord Streamlit, analyse des avis difficiles.
-- Yhan : exploration, chaîne de nettoyage paramétrable, baseline (TF-IDF + LR / SVM / Naive Bayes), LDA et mots-clés.
+- Yahn : exploration, chaîne de nettoyage paramétrable, baseline (TF-IDF + LR / SVM / Naive Bayes), LDA et mots-clés.
 - Ensemble : BERTopic, annotation humaine de 100 avis chacun (kappa de Cohen), rapport, note pour le décideur, présentation.
 
 Chacun relit le travail de l'autre (Pull Request) et les deux savent expliquer l'ensemble du projet.
@@ -40,7 +51,6 @@ Chacun relit le travail de l'autre (Pull Request) et les deux savent expliquer l
 | Dépôt final | 12/03/2027 | Tag v1.0, rapport, présentation, vidéo de secours |
 | Soutenance | 15/03/2027 | 5 à 10 minutes + questions |
 
-## Structure du dépôt
 ## Structure du dépôt
 ```
 avis-clients-nlp/
