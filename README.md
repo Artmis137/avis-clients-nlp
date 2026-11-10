@@ -90,6 +90,9 @@ uv run pytest                    # lance les tests
 Sans uv : `pip install -r requirements.txt` (généré par `uv export`).
 
 ## Conventions
-- Branches `feature/<sujet>`, Pull Request relue par l'autre membre avant fusion dans `main`.
-- Commits au format Conventional Commits (`feat:`, `fix:`, `docs:`, `test:`, `chore:`).
+- Chaque tâche a un ticket Jira (clé `AVIS-xx`), suivi sur le tableau Kanban : À faire → En cours → En revue → Terminé.
+- Branches : `feature/AVIS-xx-description-courte` (ex. `feature/AVIS-15-download-script`) ; `fix/AVIS-xx-...` pour une correction.
+- Commits au format Conventional Commits, avec la clé du ticket : `feat(data): add download script (AVIS-15)`.
+- Pull Request : titre commençant par la clé (`AVIS-15 Script de téléchargement`), relue et validée par l'autre membre avant fusion dans `main`.
+- Le ticket passe en « En revue » à l'ouverture de la PR, puis en « Terminé » à la fusion.
 - Graine aléatoire fixée (42) pour tous les découpages et entraînements.
