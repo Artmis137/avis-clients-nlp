@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+
+# Données et modèles : jamais dans le dépôt
+data/*
+!data/.gitkeep
+models_cache/
+*.pt
+*.bin
+*.safetensors
+mlruns/
+.ipynb_checkpoints/
+.env
