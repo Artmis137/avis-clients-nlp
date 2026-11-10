@@ -1,7 +1,7 @@
 # Analyse intelligente des avis clients (NLP)
 
 Projet de la matière "Analyse et restitution", M1 MLSD, Université Paris Cité (2026-2027).
-Binôme : Mamadou NIMAGA et Yhan HOUNTADA. Encadrante : Ikram Chourib. Soutenance le 15/03/2027.
+Binôme : Mamadou NIMAGA et Yahn HOUNTADA. Encadrante : Ikram Chourib. Soutenance le 15/03/2027.
 
 ## Problématique
 Une entreprise reçoit des milliers d'avis textuels que personne ne lit en entier. Comment transformer ce volume en informations décisionnelles fiables (satisfaction, thèmes, points de friction), et que gagne-t-on réellement avec un modèle de type BERT par rapport à une baseline classique ?
@@ -35,7 +35,7 @@ Niveau standard : nettoyage paramétrable, baseline, DistilBERT et BERT, thèmes
 
 ## Répartition des rôles
 - Mamadou : Transformers (DistilBERT, BERT/CamemBERT), mesures de temps et de mémoire, tableau de bord Streamlit, analyse des avis difficiles.
-- Yhan : exploration, chaîne de nettoyage paramétrable, baseline (TF-IDF + LR / SVM / Naive Bayes), LDA et mots-clés.
+- Yahn : exploration, chaîne de nettoyage paramétrable, baseline (TF-IDF + LR / SVM / Naive Bayes), LDA et mots-clés.
 - Ensemble : BERTopic, annotation humaine de 100 avis chacun (kappa de Cohen), rapport, note pour le décideur, présentation.
 
 Chacun relit le travail de l'autre (Pull Request) et les deux savent expliquer l'ensemble du projet.
